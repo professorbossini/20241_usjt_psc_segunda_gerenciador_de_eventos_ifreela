@@ -122,22 +122,38 @@ public class LoginTela extends javax.swing.JFrame {
     }//GEN-LAST:event_esqueciMinhaCenhaLabelMouseClicked
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // 1. Pegar o login digitado pelo usuario
-        String login = loginTextField.getText();
-        //2. Pegar a senha do usuario
-         String senha = new String(senhaPasswordField.getPassword());
-        //3. Verificar se o par admin/admin foi digitado
-        if(login.equals("admin") && senha.equals("admin")){
-         //4. Em caso positivo, dar boas vindas
-            JOptionPane.showMessageDialog(null, "Bem Vindo!");
-        }
-        else{
-        //5. Caso contrário, falar usuário inválido     
-            JOptionPane.showMessageDialog(null, "Par usuário/senha inválido");
-                }
-       
-    }//GEN-LAST:event_okButtonActionPerformed
+      // 1. Pegar o login digitado pelo usuário
+    String login = loginTextField.getText();
+    // 2. Pegar a senha do usuário
+    String senha = new String(senhaPasswordField.getPassword());
+    
+    // 3. Criar uma conexão com o banco de dados
+    try {
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection conexao = factory.obterConexao();
         
+        // 4. Criar um objeto UsuarioDAO com a conexão criada
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conexao);
+        
+        // 5. Verificar se o usuário existe no banco de dados
+        Usuario usuario = new Usuario(login, senha, 0); // O valor de tipoUsuario não é usado na verificação
+        boolean usuarioExiste = usuarioDAO.existe(usuario);
+        
+        // 6. Exibir mensagem de acordo com o resultado da verificação
+        if (usuarioExiste) {
+            JOptionPane.showMessageDialog(this, "Usuário autenticado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos!");
+        }
+        
+        // 7. Fechar a conexão com o banco de dados
+        conexao.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Erro ao autenticar usuário: " + e.getMessage());
+    }
+    }//GEN-LAST:event_okButtonActionPerformed
+}    
            
         
     /**
