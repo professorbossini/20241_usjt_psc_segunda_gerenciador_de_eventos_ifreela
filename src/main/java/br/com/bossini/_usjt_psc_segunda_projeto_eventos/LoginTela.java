@@ -111,15 +111,7 @@ public class LoginTela extends javax.swing.JFrame {
         String login = loginTextField.getText();
         //2. Pegar a senha digitada pelo usuário
         String senha = new String(senhaPasswordField.getPassword());
-        //3. Verificar se o par admin/admin foi digitado
-        if(login.equals("admin") && senha.equals("admin")){
-            //4. Em caso positivo, dar boas vindas
-            JOptionPane.showMessageDialog(null, "Bem vindo!");
-        }
-        else{
-            //5. Caso contrário, falar usuário inválido
-            JOptionPane.showMessageDialog(null, "Par usuário/senha inválido");
-        }
+        //3. Verificar se o usuário caracterizado por login/senha existe
         
     }//GEN-LAST:event_okButtonActionPerformed
 
