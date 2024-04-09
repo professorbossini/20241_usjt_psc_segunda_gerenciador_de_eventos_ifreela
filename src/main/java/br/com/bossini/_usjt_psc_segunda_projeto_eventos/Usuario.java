@@ -22,4 +22,17 @@ public class Usuario {
         this.login = login;
         this.senha = senha;
     }
+    
+    public Usuario(String login, String senha){
+        this(0, login, senha);
+    }
+    
+    public String getLogin(){
+        return login;
+    }
+    
+    //como fica para obter a senha
+    public String getSenha(){
+        return senha;
+    }
 }

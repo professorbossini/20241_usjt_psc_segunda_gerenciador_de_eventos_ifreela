@@ -12,8 +12,8 @@ public class ConnectionFactory {
     private String host = "pg-33ad0904-professorbossini.a.aivencloud.com";
     private String porta = "12956";
     private String banco = "defaultdb";
-    private String usuario = "";
-    private String senha = "";
+    private String usuario = "avnadmin";
+    private String senha = "AVNS_AYz38n0bB2kOyCL0TAF";
     public Connection obterConexao() throws Exception{
         String s = String.format(
             "jdbc:postgresql://%s:%s/%s",

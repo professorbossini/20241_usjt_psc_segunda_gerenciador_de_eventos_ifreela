@@ -112,6 +112,23 @@ public class LoginTela extends javax.swing.JFrame {
         //2. Pegar a senha digitada pelo usuário
         String senha = new String(senhaPasswordField.getPassword());
         //3. Verificar se o usuário caracterizado por login/senha existe
+        try{
+            var u = new Usuario(login, senha);
+            var dao = new UsuarioDAO();
+            if(dao.existe(u)){
+                JOptionPane.showMessageDialog(null, "Bem vindo!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Par usuário/senha inválido!");
+            }
+        }
+        catch(Exception e){
+            //stack trace
+            //vamos exibir a stack trace
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Tente novamente mais tarde");
+
+        }
         
     }//GEN-LAST:event_okButtonActionPerformed
 
