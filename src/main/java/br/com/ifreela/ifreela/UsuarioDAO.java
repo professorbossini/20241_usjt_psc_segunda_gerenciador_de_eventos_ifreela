@@ -4,17 +4,39 @@
  */
 package br.com.ifreela.ifreela;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author 82329522
  */
-/*public class UsuarioDAO {
-    public boolean existe(Usuario u){
-        
+public class UsuarioDAO {
+    public boolean existe(Usuario u) throws Exception{
+        //1 Especificar o comando SQL
+        String sql = "SELECT * FROM tb_usuario_psc_segunda WHERE login = ? AND senha = ?";
+        //2 Estabelecer uma conexão com o banco de dados
+        Connection conexao = new ConnectionFactory().obterConexao();
+        //3 Preparar o comando SQL
+        PreparedStatement ps = conexao.prepareStatement(sql);
+        //4 subistituir os eventuais placeholders
+        ps.setString(1, u.getLogin());
+        ps.setString(2, u.getSenha());
+        //5 Executar o codigo
+        ResultSet rs = ps.executeQuery();
+        //6 Devolver um valor boleano de acordo com o resultado
+//        if(rs.next()){
+//            return true;
+//        }
+//           return rs.next() ? true : false;
+             return rs.next();
+             //depois veremos como fechar a conexão
+             //usando um try-with-resources
     }
-}*/
+}
 
-import java.sql.Connection;
+/*import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -45,6 +67,6 @@ public class UsuarioDAO {
 
         return usuarioExiste;
     }
-}
+}*/
 
 

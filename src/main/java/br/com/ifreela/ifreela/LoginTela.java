@@ -122,13 +122,31 @@ public class LoginTela extends javax.swing.JFrame {
     }//GEN-LAST:event_esqueciMinhaCenhaLabelMouseClicked
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-      // 1. Pegar o login digitado pelo usuário
-    String login = loginTextField.getText();
-    // 2. Pegar a senha do usuário
-    String senha = new String(senhaPasswordField.getPassword());
-    
-    // 3. Criar uma conexão com o banco de dados
-    try {
+        // 1. Pegar o login digitado pelo usuário
+      String login = loginTextField.getText();
+      // 2. Pegar a senha do usuário
+      String senha = new String(senhaPasswordField.getPassword());
+
+      // 3. Criar uma conexão com o banco de dados
+      try{
+          var u = new Usuario(login, senha);
+          var DAO = new UsuarioDAO();
+          if(DAO.existe(u)){
+              JOptionPane.showInternalMessageDialog(null, "Bem vindo!");
+          }
+
+          else{
+              JOptionPane.showInternalMessageDialog(null, "Par usuário/senha inválido");        
+          }
+      }
+      catch(Exception e){
+          //stack trace
+          //vamos exibir a steck trace
+           e.printStackTrace();
+           JOptionPane.showMessageDialog(null, "tente novamente mais tarde");
+      }          
+    }
+/*try {
         ConnectionFactory factory = new ConnectionFactory();
         Connection conexao = factory.obterConexao();
         
@@ -153,7 +171,7 @@ public class LoginTela extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Erro ao autenticar usuário: " + e.getMessage());
     }
     }//GEN-LAST:event_okButtonActionPerformed
-}    
+}   /* 
            
         
     /**

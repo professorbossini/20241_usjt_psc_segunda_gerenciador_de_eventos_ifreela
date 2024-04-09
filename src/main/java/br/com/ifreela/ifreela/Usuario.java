@@ -37,7 +37,9 @@ public class Usuario {
         this.senha = senha;  
         this.tipoUsuario = tipoUsuario;
     }
-    
+    public Usuario(String login, String senha){
+        this(login, senha, 0);   
+    }
     // Getters e Setters
     public int getCodigo() {
         return codigo;
