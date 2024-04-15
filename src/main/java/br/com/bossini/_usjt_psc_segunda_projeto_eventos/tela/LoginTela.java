@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.bossini._usjt_psc_segunda_projeto_eventos;
+package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Usuario;
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -115,11 +117,23 @@ public class LoginTela extends javax.swing.JFrame {
         try{
             var u = new Usuario(login, senha);
             var dao = new UsuarioDAO();
-            if(dao.existe(u)){
-                JOptionPane.showMessageDialog(null, "Bem vindo!");
+            u = dao.existe(u);
+            if(u == null){
+                JOptionPane.
+                        showMessageDialog(null, "Usuário/senha inválidos");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Par usuário/senha inválido!");
+                if(u.getTipo() == 1){
+                    JOptionPane.showMessageDialog(null, "Bem vindo, admin");
+                    var adminTela = new AdminTela();
+                    adminTela.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Bem vindo, comum");
+                    var comumTela = new ComumTela();
+                    comumTela.setVisible(true);
+                }
+                dispose();
             }
         }
         catch(Exception e){
