@@ -1,5 +1,6 @@
-C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\LoginTela.java
-C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\IFreela.java
-C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\ConnectionFactory.java
-C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\Usuario.java
-C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\UsuarioDAO.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\tela\LoginTela.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\tela\ComumTela.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\persistencia\UsuarioDAO.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\tela\AdminTela.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\persistencia\ConnectionFactory.java
+C:\Users\82329522\Documents\NetBeansProjects\iFreela\src\main\java\br\com\ifreela\ifreela\modelo\Usuario.java

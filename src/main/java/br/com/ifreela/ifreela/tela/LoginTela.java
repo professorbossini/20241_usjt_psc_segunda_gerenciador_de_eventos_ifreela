@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.ifreela.ifreela;
+package br.com.ifreela.ifreela.tela;
 
+import br.com.ifreela.ifreela.modelo.Usuario;
+import br.com.ifreela.ifreela.persistencia.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -123,29 +125,48 @@ public class LoginTela extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // 1. Pegar o login digitado pelo usuário
-      String login = loginTextField.getText();
-      // 2. Pegar a senha do usuário
-      String senha = new String(senhaPasswordField.getPassword());
+        String login = loginTextField.getText();
+        // 2. Pegar a senha do usuário
+        String senha = new String(senhaPasswordField.getPassword());
 
-      // 3. Criar uma conexão com o banco de dados
-      try{
-          var u = new Usuario(login, senha);
-          var DAO = new UsuarioDAO();
-          if(DAO.existe(u)){
-              JOptionPane.showInternalMessageDialog(null, "Bem vindo!");
-          }
-
-          else{
-              JOptionPane.showInternalMessageDialog(null, "Par usuário/senha inválido");        
-          }
-      }
-      catch(Exception e){
-          //stack trace
-          //vamos exibir a steck trace
-           e.printStackTrace();
+        // 3. Criar uma conexão com o banco de dados
+        try {
+            // Cria um novo usuário com o login e senha fornecidos
+            var u = new Usuario(login, senha);
+    
+            // Cria uma instância do DAO de usuário
+            var dao = new UsuarioDAO();
+    
+            // Verifica se o usuário existe no banco de dados
+            u = dao.existe(u);
+    
+            if (u == null) {
+                JOptionPane.showMessageDialog(null, "Usuario/Senha inválidos");
+            } 
+            else {
+                // Verificar o tipo do usuario
+                // Se for 1, é admin, se for 2 é comum
+                if (u.getTipoUsuario() == 1) {
+                    // Se for admin, dê as boas-vindas de acordo
+                    JOptionPane.showMessageDialog(null, "Bem-vindo, administrador!");
+                    var adminTela = new AdminTela();
+                    adminTela.setVisible(true);
+                } 
+                else{
+                    // Se for usuário comum, dê as boas-vindas de acordo
+                    JOptionPane.showMessageDialog(null, "Bem-vindo, usuário!");
+                    var comumTela = new ComumTela();
+                    comumTela.setVisible(true);
+                }
+                dispose();
+            }
+        }
+        catch (Exception e) {
+            // Tratar exceções aqui, se necessário
            JOptionPane.showMessageDialog(null, "tente novamente mais tarde");
+            e.printStackTrace();
+        }
       }          
-    }
 /*try {
         ConnectionFactory factory = new ConnectionFactory();
         Connection conexao = factory.obterConexao();
