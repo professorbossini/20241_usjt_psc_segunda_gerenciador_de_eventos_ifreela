@@ -1,12 +1,13 @@
+br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$1.class
+br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/AdminTela.class
+br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/ComumTela$1.class
+br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$4.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/persistencia/ConnectionFactory.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$3.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/modelo/Usuario.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/AdminTela$1.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela.class
-br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$1.class
-br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/AdminTela.class
-br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/ComumTela$1.class
+br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/AdminTela$2.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/persistencia/UsuarioDAO.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$2.class
-br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela$4.class
 br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/ComumTela.class
