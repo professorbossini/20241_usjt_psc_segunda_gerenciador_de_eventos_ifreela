@@ -149,7 +149,7 @@ public class LoginTela extends javax.swing.JFrame {
                 if (u.getTipoUsuario() == 1) {
                     // Se for admin, dê as boas-vindas de acordo
                     JOptionPane.showMessageDialog(null, "Bem-vindo, administrador!");
-                    var adminTela = new AdminTela();
+                    var adminTela = new AdminTela(this);
                     adminTela.setVisible(true);
                 } 
                 else{
