@@ -9,6 +9,10 @@ import java.sql.*;
  * @author 82329522
  */
 public class ConnectionFactory {
+
+    static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
         private String host = "pg-1edc1c76-ifreela.a.aivencloud.com" ;
         private String porta = "18910";
         private String banco = "defaultdb";

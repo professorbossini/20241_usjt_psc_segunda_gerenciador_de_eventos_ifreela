@@ -4,6 +4,10 @@
  */
 package br.com.ifreela.ifreela.tela;
 
+import br.com.ifreela.ifreela.modelo.Evento;
+import br.com.ifreela.ifreela.persistencia.EventoDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 82329522
@@ -59,6 +63,11 @@ public class AdminTela extends javax.swing.JFrame {
         });
 
         cadastroEventoButton.setText("OK");
+        cadastroEventoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroEventoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,10 +130,36 @@ public class AdminTela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    //GEN-FIRST:event_voltarEventoButtonActionPerformed
+//GEN-FIRST:event_voltarEventoButtonActionPerformed
         this.loginTela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltarEventoButtonActionPerformed
+
+    private void cadastroEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroEventoButtonActionPerformed
+        
+        try{
+            
+            // 1. Pegar o nome do evento
+            var nome = nomeEventoTextField.getText();
+            // 2. Pegar descrição do evento
+            var descricao = descricaoEventoTextField.getText();
+            // 3. Instanciar um objeto evento
+            var evento = new Evento(0, nome, descricao);
+            // 4. Construir um objeto DAO
+            var dao = new EventoDAO();
+            // 5. Cadastrar
+            dao.cadastrar(evento);
+            // 6. Mostrar uma mensagem de confirmação
+            JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso");
+            
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso");
+        }
+
+    
+    }//GEN-LAST:event_cadastroEventoButtonActionPerformed
 
     /**
      * @param args the command line arguments
