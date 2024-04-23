@@ -9,11 +9,11 @@ import java.sql.*;
  * @author rodrigo
  */
 public class ConnectionFactory {
-    private String host = "pg-33ad0904-professorbossini.a.aivencloud.com";
-    private String porta = "12956";
+    private String host = "pg-88b7406-joaovini1124-f1c6.a.aivencloud.com";
+    private String porta = "10112";
     private String banco = "defaultdb";
     private String usuario = "avnadmin";
-    private String senha = "AVNS_AYz38n0bB2kOyCL0TAF";
+    private String senha = "AVNS_bxtXhYTWVahsCBiW1pO";
     public Connection obterConexao() throws Exception{
         String s = String.format(
             "jdbc:postgresql://%s:%s/%s",

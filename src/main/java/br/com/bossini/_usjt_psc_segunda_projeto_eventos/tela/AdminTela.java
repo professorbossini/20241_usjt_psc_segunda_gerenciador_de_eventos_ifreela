@@ -4,6 +4,10 @@
  */
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rodrigo
@@ -59,6 +63,11 @@ public class AdminTela extends javax.swing.JFrame {
         });
 
         cadastraEventoButton.setText("OK");
+        cadastraEventoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastraEventoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,6 +126,27 @@ public class AdminTela extends javax.swing.JFrame {
         this.loginTela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltarEventoButtonActionPerformed
+
+    private void cadastraEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraEventoButtonActionPerformed
+     try{
+         var nome = nomeEventoTextField.getText();
+         var descricao = descricaoEventoTextField.getText();
+         
+         var evento = new Evento (0, nome, descricao);
+         var dao = new EventoDAO(); 
+         dao.cadastrar(evento); 
+         JOptionPane.showMessageDialog(null,"Evento cadastrado com sucesso ");
+         
+     }
+     catch(Exception e){
+         e.printStackTrace();
+        JOptionPane.showMessageDialog(null,"Falha, tente novamente mais tarde "); 
+     }
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_cadastraEventoButtonActionPerformed
 
     /**
      * @param args the command line arguments
