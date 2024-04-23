@@ -4,6 +4,10 @@
  */
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rodrigo
@@ -59,6 +63,11 @@ public class AdminTela extends javax.swing.JFrame {
         });
 
         cadastraEventoButton.setText("OK");
+        cadastraEventoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastraEventoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,6 +126,27 @@ public class AdminTela extends javax.swing.JFrame {
         this.loginTela.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltarEventoButtonActionPerformed
+
+    private void cadastraEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraEventoButtonActionPerformed
+        try{
+            //1. Pegar o nome do evento
+            var nome = nomeEventoTextField.getText();
+            //2. Pegar a descrição do evento
+            var descricao = descricaoEventoTextField.getText();
+            //3. Instanciar um objeto evento
+            var evento = new Evento(0, nome, descricao);
+            //4. Construir um objeto DAO
+            var dao = new EventoDAO();
+            //5. Cadastrar
+            dao.cadastrar(evento);
+            //6. Mostrar uma mensagem de confirmação
+            JOptionPane.showMessageDialog(null, "Evento cadastrado com sucesso");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Falha. Tente novamente mais tarde");
+        }
+    }//GEN-LAST:event_cadastraEventoButtonActionPerformed
 
     /**
      * @param args the command line arguments
