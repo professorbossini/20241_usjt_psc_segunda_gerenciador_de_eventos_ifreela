@@ -21,5 +21,6 @@ public class Evento {
     private int codigo;
     private String nome;
     private String descricao;
+    private boolean tenhoInteresse;
     
 }

@@ -144,7 +144,7 @@ public class AdminTela extends javax.swing.JFrame {
             // 2. Pegar descrição do evento
             var descricao = descricaoEventoTextField.getText();
             // 3. Instanciar um objeto evento
-            var evento = new Evento(0, nome, descricao);
+            var evento = new Evento(0, nome, descricao, true);
             // 4. Construir um objeto DAO
             var dao = new EventoDAO();
             // 5. Cadastrar
