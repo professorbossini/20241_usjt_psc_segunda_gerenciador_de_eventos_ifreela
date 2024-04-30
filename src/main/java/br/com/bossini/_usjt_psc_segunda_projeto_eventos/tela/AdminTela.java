@@ -132,7 +132,7 @@ public class AdminTela extends javax.swing.JFrame {
          var nome = nomeEventoTextField.getText();
          var descricao = descricaoEventoTextField.getText();
          
-         var evento = new Evento (0, nome, descricao);
+         var evento = new Evento (0, nome, descricao, true);
          var dao = new EventoDAO(); 
          dao.cadastrar(evento); 
          JOptionPane.showMessageDialog(null,"Evento cadastrado com sucesso ");
