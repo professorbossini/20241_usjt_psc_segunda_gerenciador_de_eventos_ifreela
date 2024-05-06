@@ -1,8 +1,11 @@
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/LoginTela.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/persistencia/ConnectionFactory.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/ComumTela.java
+/home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/exemplo_jtable/ExemploJTable2.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/tela/AdminTela.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/modelo/Evento.java
+/home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/modelo/EventoTableModel.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/persistencia/UsuarioDAO.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/modelo/Usuario.java
+/home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/exemplo_jtable/ExemploJTable1.java
 /home/rodrigo/workspaces/20241/netbeans/20241_usjt_psc_segunda_projeto_eventos/src/main/java/br/com/bossini/_usjt_psc_segunda_projeto_eventos/persistencia/EventoDAO.java
