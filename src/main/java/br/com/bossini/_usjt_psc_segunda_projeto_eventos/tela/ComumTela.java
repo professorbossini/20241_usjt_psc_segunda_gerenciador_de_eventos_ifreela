@@ -5,8 +5,10 @@
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +20,24 @@ public class ComumTela extends javax.swing.JFrame {
      * Creates new form ComumTela
      */
     public ComumTela() {
-        //centraliza
-        setLocationRelativeTo(null);
-        initComponents();
-        //coleção de eventos fictícia
-        List<Evento> eventos = new ArrayList<>();
-        eventos.add(new Evento(1, "Jogo", "GTA6", true));
-        eventos.add(new Evento(2, "Jogo", "Fifa25", true));
+        try{
+            //centraliza
+            setLocationRelativeTo(null);
+            initComponents();
+            //coleção de eventos fictícia
+            //List<Evento> eventos = new ArrayList<>();
+            //eventos.add(new Evento(1, "Jogo", "GTA6", true));
+            //eventos.add(new Evento(2, "Jogo", "Fifa25", true));
+            //coleção real
+            List <Evento> eventos = new EventoDAO().listar();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(
+                null, 
+                "Erro, tente novamente mais tarde"
+            );
+        }
     }
 
     /**

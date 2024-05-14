@@ -15,7 +15,7 @@ import java.util.List;
 public class EventoDAO {
     public void cadastrar(Evento e) throws Exception{
         //1. Especificar o comando SQL (INSERT)
-        var sql = "INSERT INTO tb_evento_psc_segunda (nome, descricao) VALUES(?, ?)";
+        var sql = "INSERT INTO tb_evento_psc_segunda (nome, descricao, data_inicio, data_termino) VALUES(?, ?, ?, ?)";
         //try-with-resources
         //2. Abrir uma conexão com o banco
         try(var conexao = new ConnectionFactory().obterConexao()){
@@ -24,6 +24,8 @@ public class EventoDAO {
             //4. Substituir os eventuais placeholders
             ps.setString(1, e.getNome());
             ps.setString(2, e.getDescricao());
+            ps.setDate(3, new java.sql.Date(e.getDataInicio().getTime()));
+            ps.setDate(4, new java.sql.Date(e.getDataTermino().getTime()));
             //5. Executar o comando
             ps.execute();
             //6. Fechar a conexão

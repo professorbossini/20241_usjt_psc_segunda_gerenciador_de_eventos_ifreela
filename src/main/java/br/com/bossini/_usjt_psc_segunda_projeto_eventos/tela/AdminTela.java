@@ -7,6 +7,7 @@ package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
 import javax.swing.JOptionPane;
+import java.util.Date;
 
 /**
  *
@@ -134,7 +135,9 @@ public class AdminTela extends javax.swing.JFrame {
             //2. Pegar a descrição do evento
             var descricao = descricaoEventoTextField.getText();
             //3. Instanciar um objeto evento
-            var evento = new Evento(0, nome, descricao, true);
+            var evento = new Evento(
+                0, nome, descricao, true, new Date(), new Date()
+            );
             //4. Construir um objeto DAO
             var dao = new EventoDAO();
             //5. Cadastrar
