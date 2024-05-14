@@ -17,11 +17,13 @@ import java.util.List;
  */
 public class EventoDAO {
     public void cadastrar (Evento e) throws Exception{
-    var sql = "INSERT INTO tb_evento_psc_segunda (nome, descricao) VALUES (?,?)";
+    var sql = "INSERT INTO tb_evento_psc_segunda (nome, descricao, data_inicio, data_termino) VALUES (?,?,?,?)";
     Connection conexao = new ConnectionFactory().obterConexao();
     PreparedStatement ps = conexao.prepareStatement(sql);
      ps.setString(1, e.getNome());
-        ps.setString(2, e.getDescricao());
+     ps.setString(2, e.getDescricao());
+     ps.setDate(3, new java.sql.Date(e.getDataInicio().getTime()));
+     ps.setDate(4, new java.sql.Date(e.getDataFim().getTime()));
         
    ps.execute();
 conexao.close();

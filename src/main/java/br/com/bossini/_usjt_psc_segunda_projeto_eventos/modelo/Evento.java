@@ -23,8 +23,8 @@ public class Evento {
     private String nome;
     private String descricao;
     private boolean tenhoInteresse;
-    private date dataInicio;
-    private date dataFim;
+    private Date dataInicio;
+    private Date dataFim;
 
     public void setDataFim(Date dataFim) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

@@ -6,6 +6,7 @@ package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -132,7 +133,7 @@ public class AdminTela extends javax.swing.JFrame {
          var nome = nomeEventoTextField.getText();
          var descricao = descricaoEventoTextField.getText();
          
-         var evento = new Evento (0, nome, descricao, true);
+         var evento = new Evento (0, nome, descricao, true, new Date(), new Date());
          var dao = new EventoDAO(); 
          dao.cadastrar(evento); 
          JOptionPane.showMessageDialog(null,"Evento cadastrado com sucesso ");
