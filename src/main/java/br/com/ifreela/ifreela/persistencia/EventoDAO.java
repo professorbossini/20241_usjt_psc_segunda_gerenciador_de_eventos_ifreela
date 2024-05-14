@@ -5,6 +5,8 @@
 package br.com.ifreela.ifreela.persistencia;
 
 import br.com.ifreela.ifreela.modelo.Evento;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -28,5 +30,50 @@ public class EventoDAO {
             //6. Fechar a conexão
         }
     }
-}
+    public List<Evento> listar() throws Exception{
+        //1 Construir um objeto ArrayList
+        var eventos = new ArrayList<Evento>();
+        //2 Especificar comando SQL
+        var sql = "SELECT * FROM tb_evento_psc_segunda";
+        //3 Estabelecer uma conexão com o banco de dados
+        try(
+                var conexao =
+                        new ConnectionFactory().obterConexao();
+            //4 Preparar comando
+            //5 Subistituir os eventuais placeholders
+                var ps = conexao.prepareStatement(sql);
+            //6 Execultar comandos
+                var rs = ps.executeQuery();
+                
+        ){
 
+
+            //7 Lidar com o resultado
+            while(rs.next()){
+                //a pegar nome
+                var nome = rs.getString("nome");         
+                //b pegar descrição
+                var descricao = rs.getString("descricao");               
+                //c pegar data inicio
+                var dataIncio =
+                        new java.util.Date(rs.getDate("data_incio"). getTime());
+                                                           
+                //d pegar data termino
+                var dataTermino =
+                        new java.util.Date(rs.getDate("data_termino").getTime());
+                                                            
+                //e construir um objeto Evento
+                var e = new Evento();
+                //f atribuir os valores a ele com seus setters
+                e.setNome(nome);
+                e.setDescricao(descricao);
+                e.setDataInicio(dataIncio);
+                e.setDataTermino(dataTermino);
+                //g adicionar o Evento à lista de eventos
+                eventos.add(e);
+            }
+                return eventos;
+            //8 Fechar recursos: Já foi feito pelo try-with-resources
+        }
+    }
+}

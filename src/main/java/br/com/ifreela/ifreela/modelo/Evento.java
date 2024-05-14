@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 /**
  *
@@ -22,5 +23,7 @@ public class Evento {
     private String nome;
     private String descricao;
     private boolean tenhoInteresse;
+    private Date dataInicio;
+    private Date dataTermino;
     
 }
