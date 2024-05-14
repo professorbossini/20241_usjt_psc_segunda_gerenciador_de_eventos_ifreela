@@ -4,6 +4,7 @@
  */
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,15 @@ public class Evento {
     private String nome;
     private String descricao;
     private boolean tenhoInteresse;
+    private date dataInicio;
+    private date dataFim;
+
+    public void setDataFim(Date dataFim) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
