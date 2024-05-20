@@ -1,3 +1,7 @@
+20/05
+1. No construtor da classe ComumTela, lidar com a lista de eventos
+trazida da base, de modo que os dados sejam exibidos na JTable
+
 06/05
 
 1. Na classe EventoDAO, escrever um método que traz a coleção de eventos cadastrados na base. Ele pode devolver um vetor, um ArrayList.
