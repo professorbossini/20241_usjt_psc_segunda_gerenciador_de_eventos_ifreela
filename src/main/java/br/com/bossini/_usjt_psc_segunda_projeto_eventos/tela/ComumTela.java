@@ -5,6 +5,7 @@
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.tela;
 
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
+import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.EventoTableModel;
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia.EventoDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +17,22 @@ import javax.swing.JOptionPane;
  */
 public class ComumTela extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ComumTela
-     */
+    private List <Evento> eventos;
     public ComumTela() {
         try{
+            initComponents();
             //centraliza
             setLocationRelativeTo(null);
-            initComponents();
             //coleção de eventos fictícia
             //List<Evento> eventos = new ArrayList<>();
             //eventos.add(new Evento(1, "Jogo", "GTA6", true));
             //eventos.add(new Evento(2, "Jogo", "Fifa25", true));
             //coleção real
-            List <Evento> eventos = new EventoDAO().listar();
+            eventos = new EventoDAO().listar();
+            System.out.println(eventos);
+            var model = new EventoTableModel(eventos);
+            eventosTable.setModel(model);
+            
         }
         catch(Exception e){
             e.printStackTrace();
@@ -52,6 +55,7 @@ public class ComumTela extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         eventosTable = new javax.swing.JTable();
+        atualizarDadosButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,14 +66,14 @@ public class ComumTela extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Descrição", "Tenho interesse?"
+                "Nome", "Descrição", "Tenho interesse?", "Data Início", "Data Término"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -82,29 +86,56 @@ public class ComumTela extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(eventosTable);
 
+        atualizarDadosButton.setText("Atualizar");
+        atualizarDadosButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarDadosButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(atualizarDadosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(atualizarDadosButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atualizarDadosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarDadosButtonActionPerformed
+        try{
+            System.out.println(eventos);
+            new EventoDAO().atualizar(eventos);
+            JOptionPane.showMessageDialog(null, "OK!");
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Tente novamente mais tarde");
+        }
+    }//GEN-LAST:event_atualizarDadosButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +173,7 @@ public class ComumTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atualizarDadosButton;
     private javax.swing.JTable eventosTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

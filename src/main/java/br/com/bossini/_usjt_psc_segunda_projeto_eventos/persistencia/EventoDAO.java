@@ -5,7 +5,10 @@
 package br.com.bossini._usjt_psc_segunda_projeto_eventos.persistencia;
 
 import br.com.bossini._usjt_psc_segunda_projeto_eventos.modelo.Evento;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -50,30 +53,60 @@ public class EventoDAO {
         ){
             //7. Lidar com o resultado
             while(rs.next()){
+                var codigo = rs.getInt("cod_evento");
                 //a. pegar o nome
                 var nome = rs.getString("nome");
                 //b. pegar a descrição
                 var descricao = rs.getString("descricao");
                 //c. pegar a data inicio
-                var dataInicio = new java.util.Date(
-                    rs.getDate("data_inicio").getTime()
-                );
+                var dataInicio = new java.util.Date(rs.getTimestamp("data_inicio").getTime());
                 //d. pegar a data termino
-                var dataTermino = new java.util.Date(
-                    rs.getDate("data_termino").getTime()
-                );
+                var aux = rs.getTimestamp("data_termino");
+                var dataTermino = new java.util.Date(aux.getTime());
+                var temInteresse = rs.getBoolean("tem_interesse");
                 //e. construir um objeto Evento
                 var e = new Evento();
                 //f. atribuir os valores a ele com seus setters
+                e.setCodigo(codigo);
                 e.setNome(nome);
                 e.setDescricao(descricao);
                 e.setDataInicio(dataInicio);
                 e.setDataTermino(dataTermino);
+                e.setTenhoInteresse(temInteresse);
                 //g. adicionar o Evento à lista de eventos
                 eventos.add(e);
             }
             return eventos;
             //8. Fechar os recursos: Já foi feito pelo try-with-resources
+        }
+    }
+    
+    public void atualizar(List<Evento> eventos) throws Exception{
+        //definir o comando SQL
+        var sql = "UPDATE tb_evento_psc_segunda SET nome=?,descricao=?,tem_interesse=?,data_inicio=?,data_termino=? WHERE cod_evento=?";
+        try(
+            //abrir uma conexão com o banco
+            var conexao = new ConnectionFactory().obterConexao();
+            //preparar o comando
+            var ps = conexao.prepareStatement(sql);
+        ){
+            //iterando sobre a coleção:
+            for (Evento e : eventos){
+                //para cada linha, substituir os placeholders
+                ps.setString(1, e.getNome());
+                ps.setString(2, e.getDescricao());
+                ps.setBoolean(3, e.isTenhoInteresse());
+//                var t = new Timestamp(e.getDataInicio().getTime());
+//                ps.setDate(4, new java.sql.Date());
+                ps.setDate(
+                    5, 
+                    new java.sql.Date(e.getDataTermino().getTime())
+                );
+                ps.setInt(6, e.getCodigo());
+                //executar o comando
+                ps.executeUpdate();
+            }
+            //fechar os recursos (try-with-resources já faz)
         }
     }
 }
